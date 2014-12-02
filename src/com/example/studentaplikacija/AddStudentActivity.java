@@ -40,13 +40,13 @@ public class AddStudentActivity extends ActionBarActivity {
 	static String ADD_STUDENTS ="addStudent";
 	static String ADD_STUDENT_ACTION = "StudentService/AddStudent";
 	static String TAG = "AddStudentActivity";
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_student);
-		
+
 	}
 
 	@Override
@@ -67,12 +67,10 @@ public class AddStudentActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
-	
+
+
+
 	public void addStudent (View view) {
-		
-		
 		EditText txtName= (EditText) findViewById(R.id.txtImeStudenta);
 		final String name = txtName.getText().toString();
 		EditText txtJmbg = (EditText) findViewById(R.id.txtJMBG);
@@ -87,51 +85,46 @@ public class AddStudentActivity extends ActionBarActivity {
 		final String datum = txtDatum.getText().toString();
 		EditText txtBrIndexa = (EditText) findViewById(R.id.txtbrIndexa);
 		final String brIndexa = txtBrIndexa.getText().toString();
-		
+
 		try {
 			Thread t = new Thread(new  Runnable() {
 				public void run(){
-					
-					
-					
-					
-					
 					Log.i(TAG, "Unesi studenta");
 					SoapObject request = new SoapObject(MainActivity.NAMESPACE, ADD_STUDENTS);
 					PropertyInfo propName = new PropertyInfo();
 					propName.name= "studentName";
 					propName.type = PropertyInfo.STRING_CLASS;
 					request.addProperty(propName, name);
-					
+
 					PropertyInfo propIndex = new PropertyInfo();
 					propIndex.name = "IndexNumber";
 					propIndex.type = PropertyInfo.STRING_CLASS;
 					request.addProperty(propIndex, brIndexa);
-					
+
 					PropertyInfo propCity = new PropertyInfo();
 					propCity.name = "City";
 					propCity.type = PropertyInfo.STRING_CLASS;
 					request.addProperty(propCity, grad);
-					
+
 					PropertyInfo propAdress = new PropertyInfo();
 					propAdress.name = "address";
 					propAdress.type = PropertyInfo.STRING_CLASS;
 					request.addProperty(propAdress, adresa);
-					
+
 					PropertyInfo propJMBG = new PropertyInfo();
 					propJMBG.name = "jmbg";
 					propJMBG.type = PropertyInfo.STRING_CLASS;
 					request.addProperty(propJMBG, jmbg);
-					
+
 					PropertyInfo propSex = new PropertyInfo();
 					propSex.name = "sex";
 					propSex.type = PropertyInfo.STRING_CLASS;
 					request.addProperty(propSex, sex);
-					
+
 					PropertyInfo propDatum = new PropertyInfo();
 					propDatum.name = "datumRodj";
 					propDatum.type = PropertyInfo.STRING_CLASS;
-				
+
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 					Date date = new Date();
 					try {
@@ -141,7 +134,7 @@ public class AddStudentActivity extends ActionBarActivity {
 						e1.printStackTrace();
 					}
 					request.addProperty(propDatum, formatter.format(date));
-					
+
 					System.out.println("request: " + request.toString());
 					SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
 							SoapEnvelope.VER10);
@@ -151,15 +144,15 @@ public class AddStudentActivity extends ActionBarActivity {
 					envelope.setOutputSoapObject(request);
 					HttpTransportSE transport = new HttpTransportSE(
 							MainActivity.URL);
-					
+
 					Log.i(TAG, "Pozivam WCF.... ");
-					
+
 					try {
 						Log.i(TAG, "before call");
 						transport.debug = true;
 						transport.call(ADD_STUDENT_ACTION, envelope);
 						Log.i(TAG, "after call add");
-						
+
 					}  catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -167,34 +160,27 @@ public class AddStudentActivity extends ActionBarActivity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
 					Intent intent = new Intent(AddStudentActivity.this,
 							MainActivity.class);
 					startActivity(intent);
-					
-					
-						
-					
 				}
-				});
+			});
 			t.start();
 			try {
 				t.join();
-				
+
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
+
 	protected void sleep(int i) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void dugmeOK(View view){

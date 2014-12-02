@@ -1,7 +1,9 @@
 package com.example.studentaplikacija;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,9 +18,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -58,6 +65,7 @@ public class MainActivity extends ActionBarActivity {
 	private StudentListAdapter adapter;
 	public static String SEARCH_RESULT = "SEARCH_RESULT";
 	
+	HashMap<String, String> kliknutStudent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +83,43 @@ public class MainActivity extends ActionBarActivity {
 		adapter = new StudentListAdapter(this, studentList);
 		listaStudenata.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
+		registerForContextMenu(listaStudenata);
 	}
+
+
+	// Popup meni
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		if(v.getId() == R.id.listaStudenata) {
+			AdapterContextMenuInfo acmi = (AdapterContextMenuInfo) menuInfo;
+			Object item = listaStudenata.getItemAtPosition(acmi.position);
+			if(item instanceof HashMap) {
+				HashMap<String, String> itemMap = (HashMap<String, String>) item;
+				kliknutStudent = itemMap;
+			}
+		}
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.popup_menu, menu);
+
+	}
+
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.popup_menu_delete_item) {
+			if(kliknutStudent != null) {
+				delete();
+			}
+		}else if(item.getItemId() == R.id.popup_menu_update_item) {
+			if(kliknutStudent != null) {
+				update();
+			}
+		}
+		
+		return super.onContextItemSelected(item);
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,9 +139,29 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public void DugmeUpdate(View view){
+
+	public void update(){
+		String id = kliknutStudent.get(Student_ID);
+		String name = kliknutStudent.get(StudentName);
+		String index = kliknutStudent.get(IndexNumber);
+		String city = kliknutStudent.get(City);
+		String address = kliknutStudent.get(Address);
+		String jmbg = kliknutStudent.get(JMBG);
+		String sex = kliknutStudent.get(Sex);
+		String dateStr = kliknutStudent.get(BirthDate);
+		
 		Intent intent = new Intent(this,UpdateMainActivity.class);
+		
+		intent.putExtra("UPDATE_ID", id);
+		intent.putExtra("UPDATE_NAME", name);
+		intent.putExtra("UPDATE_INDEX", index);
+		intent.putExtra("UPDATE_CITY", city);
+		intent.putExtra("UPDATE_ADDRESS", address);
+		intent.putExtra("UPDATE_JMBG", jmbg);
+		intent.putExtra("UPDATE_SEX", sex);
+		intent.putExtra("UPDATE_DATUM", dateStr);
+		
+		//Log.i(TAG, "SALJEM: " + id + ", " + name + ", " + index + ", " + city + ", " + address + ", " + jmbg + ", " + sex + ", " + dateStr);
 		startActivity(intent);
 	}
 
@@ -113,68 +177,45 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 
-	public void Delete(View view) {
-		// TODO napraviti metodu koja brise studenta iz baze
-		RelativeLayout layout = (RelativeLayout) findViewById(R.layout.textfield);
-		for (int i = 0; i < layout.getChildCount(); i++) {
-	        View v = layout.getChildAt(i);
-	        if (v instanceof CheckBox) {
-	        	if(v.isSelected()){
-	    			Log.i(TAG, "selected");
-	    			}
-	        }
-	    }
-	
-	
-		CheckBox cb = (CheckBox) findViewById(R.id.checkBox1);
-		EditText txtId = (EditText) findViewById(R.id.idStudenta);
-		Log.i(TAG, "pozvana delete student "+ txtId.getText().toString());
-		if(cb.isSelected()){
-			Log.i(TAG, "selected");
-			//TextView txtId = (TextView) findViewById(R.id.idStudenta);
-			String strID = txtId.getText().toString();
-			final Integer id = Integer.parseInt(strID);
-			Thread t = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					Log.i(TAG, "delete student");
-					SoapObject request = new SoapObject(NAMESPACE, DELETE_STUDENTS);
-					PropertyInfo property = new PropertyInfo();
-					property.name="studentID";
-					property.type=PropertyInfo.INTEGER_CLASS;
-					request.addProperty(property, id);
-					
-					SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-							SoapEnvelope.VER10);
-					envelope.implicitTypes = true;
-					envelope.dotNet = true;
-					envelope.encodingStyle = SoapSerializationEnvelope.XSD;
-					envelope.setOutputSoapObject(request);
-					HttpTransportSE transport = new HttpTransportSE(
-							MainActivity.URL);
-					
-					Log.i(MainActivity.TAG, "before call");
-					transport.debug = true;
-					try {
-						transport.call(DELETE_STUDENTS,envelope);
-						Log.i(MainActivity.TAG, "after call");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (XmlPullParserException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+	public void delete() {
+		final int id = Integer.parseInt(kliknutStudent.get(Student_ID));
+		Log.i(TAG, "pozvana delete student "+ id);
+		Thread t = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				Log.i(TAG, "delete student");
+				SoapObject request = new SoapObject(NAMESPACE, DELETE_STUDENTS);
+				PropertyInfo property = new PropertyInfo();
+				property.name="studentID";
+				property.type=PropertyInfo.INTEGER_CLASS;
+				request.addProperty(property, id);
+
+				SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
+				envelope.implicitTypes = true;
+				envelope.dotNet = true;
+				//envelope.encodingStyle = SoapSerializationEnvelope.XSD;
+				envelope.setOutputSoapObject(request);
+				HttpTransportSE transport = new HttpTransportSE(
+						MainActivity.URL);
+
+				Log.i(MainActivity.TAG, "before call");
+				transport.debug = true;
+				try {
+					transport.call(DELETE_STUDENTS,envelope);
+					Log.i(MainActivity.TAG, "after call");
+					listAllStudents();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (XmlPullParserException e) {
+					e.printStackTrace();
 				}
-			});
-			t.start();
-			try {
-				t.join();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-			
+		});
+		t.start();
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -203,8 +244,7 @@ public class MainActivity extends ActionBarActivity {
 
 						for (int i = 0; i < response.getPropertyCount(); i++) {
 							Log.i(TAG, "napuni listu");
-							Log.i(TAG, "property"
-									+ response.getProperty(i).toString());
+							//Log.i(TAG, "property" + response.getProperty(i).toString());
 							SoapObject returned = ((SoapObject) response
 									.getProperty(i));
 							fillHashMap(studentList, returned);

@@ -8,13 +8,14 @@ import com.example.studentaplikacija.MainActivity;
 
 
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.example.studentaplikacija.R;
 
-public class StudentListAdapter extends BaseAdapter {
-
+public class StudentListAdapter extends BaseAdapter implements ListAdapter {
 	private MainActivity activity;
 	private ArrayList list;
 
@@ -45,7 +46,7 @@ public class StudentListAdapter extends BaseAdapter {
 		if (convertView ==null)
 			studentView = activity.getLayoutInflater().inflate(R.layout.textfield,null);
 
-		HashMap<String, String> item =  (HashMap<String, String>) list.get(position);
+		final HashMap<String, String> item =  (HashMap<String, String>) list.get(position);
 
 		TextView txtID = (TextView)studentView.findViewById(R.id.idStudenta);
 		txtID.setText(item.get(activity.Student_ID));
@@ -71,10 +72,18 @@ public class StudentListAdapter extends BaseAdapter {
 		TextView txtDatumRodjenja = (TextView)studentView.findViewById(R.id.DatumRodjenja);
 		txtDatumRodjenja.setText(item.get(activity.BirthDate));
 
-
-
-
+		studentView.setLongClickable(true);
 		return studentView;
+	}
+
+	@Override
+	public boolean areAllItemsEnabled() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled(int arg0) {
+		return true;
 	}
 
 

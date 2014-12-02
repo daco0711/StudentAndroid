@@ -36,6 +36,38 @@ public class UpdateMainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_update_main);
+		
+		String id = getIntent().getStringExtra("UPDATE_ID");
+		EditText txtID = (EditText) findViewById(R.id.txtIDupdate);
+		txtID.setText(id);
+		
+		String name = getIntent().getStringExtra("UPDATE_NAME");
+		EditText txtName = (EditText) findViewById(R.id.txtImeStudentaupdate);
+		txtName.setText(name);
+		
+		String jmbg = getIntent().getStringExtra("UPDATE_JMBG");
+		EditText txtJmbg = (EditText) findViewById(R.id.txtJMBG);
+		txtJmbg.setText(jmbg);
+		
+		String brIndexa = getIntent().getStringExtra("UPDATE_INDEX");
+		EditText txtBrIndexa = (EditText) findViewById(R.id.txtbrIndexa);
+		txtBrIndexa.setText(brIndexa);
+		
+		String city = getIntent().getStringExtra("UPDATE_CITY");
+		EditText txtCity = (EditText) findViewById(R.id.txtGrad);
+		txtCity.setText(city);
+		
+		String address = getIntent().getStringExtra("UPDATE_ADDRESS");
+		EditText txtAddress = (EditText) findViewById(R.id.txtAdresa);
+		txtAddress.setText(address);
+		
+		String sex = getIntent().getStringExtra("UPDATE_SEX");
+		EditText txtSex = (EditText) findViewById(R.id.txtSex);
+		txtSex.setText(sex);
+		
+		String datum = getIntent().getStringExtra("UPDATE_DATUM");
+		EditText txtDatum = (EditText) findViewById(R.id.txtDatum);
+		txtDatum.setText(datum);
 	}
 
 	@Override
@@ -57,11 +89,10 @@ public class UpdateMainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
+	
 	public void updateStudent(View view) {
-		
-		
-
-		TextView txtID = (TextView) findViewById(R.id.txtIDupdate);
+		EditText txtID = (EditText) findViewById(R.id.txtIDupdate);
 		final String iD = txtID.getText().toString();
 		EditText txtName = (EditText) findViewById(R.id.txtImeStudentaupdate);
 		final String studentName = txtName.getText().toString();
@@ -91,18 +122,12 @@ public class UpdateMainActivity extends ActionBarActivity {
 						Toast.LENGTH_LONG).show();
 				return;
 			}
-			
-			
-			
 			try {
-
 				Thread t = new Thread(new Runnable() {
-
 					@Override
 					public void run() {
 						Log.i(MainActivity.TAG, "Update studenta");
-						SoapObject request = new SoapObject(
-								MainActivity.NAMESPACE, UPDATE_STUDENTS);
+						SoapObject request = new SoapObject(MainActivity.NAMESPACE, UPDATE_STUDENTS);
 						PropertyInfo propID = new PropertyInfo();
 						propID.name = "studentID";
 						propID.type = PropertyInfo.INTEGER_CLASS;
@@ -168,13 +193,10 @@ public class UpdateMainActivity extends ActionBarActivity {
 							Log.i(MainActivity.TAG, "after call add");
 							
 						}  catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
 						Intent intent = new Intent(UpdateMainActivity.this,
 								MainActivity.class);
 						startActivity(intent);
@@ -187,9 +209,6 @@ public class UpdateMainActivity extends ActionBarActivity {
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				
-				
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -12,7 +12,8 @@
         android:id="@+id/txtIDupdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:ems="10" 
+        android:enabled="false"/>
     
     <TextView
         android:id="@+id/textViewID"
@@ -127,7 +128,5 @@
         android:text="OK"
         android:layout_toEndOf="@+id/txtImeStudentaupdate"
         android:onClick="updateStudent"/>
-        
-        
 
 </RelativeLayout>
