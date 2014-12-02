@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <TextView
+        android:id="@+id/idStudenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idStudenta"
+        />
+    
+    <TextView
+    	android:id="@+id/ImeStudenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/idStudenta"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    
+    <TextView
+    	android:id="@+id/IndexNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ImeStudenta"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    
+    <TextView
+    	android:id="@+id/Grad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/IndexNumber"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    
+    	<TextView
+    	android:id="@+id/Adresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/Grad"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    	
+    	<TextView
+    	android:id="@+id/JMBG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/Adresa"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    	
+    	<TextView
+    	android:id="@+id/Sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/JMBG"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+    	
+    	<TextView
+    	android:id="@+id/DatumRodjenja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/Sex"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="48dp" />
+
+    	
+
+</RelativeLayout>
+

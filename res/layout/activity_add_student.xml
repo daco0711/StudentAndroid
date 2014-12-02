@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+
+    <EditText
+        android:id="@+id/txtImeStudenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewIDStudenta"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textViewStudentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtImeStudenta"
+        android:text="Ime Studenta" />
+
+    <EditText
+        android:id="@+id/txtJMBG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewStudentName"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textViewJMBG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtJMBG"
+        android:text="JMBG" />
+
+    <EditText
+        android:id="@+id/txtGrad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewJMBG"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textViewGrad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtGrad"
+        android:text="Grad" />
+
+    <EditText
+        android:id="@+id/txtAdresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewGrad"
+        android:layout_centerVertical="true"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textVAdresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtAdresa"
+        android:text="Adresa" />
+
+    <EditText
+        android:id="@+id/txtSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textVAdresa"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textViewSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSex"
+        android:text="Sex" />
+
+    <EditText
+        android:id="@+id/txtDatum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewSex"
+        android:ems="10"/>
+    
+    <TextView
+        android:id="@+id/textViewDatum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDatum"
+        android:text="Datum Rodjenja" />
+
+    <EditText
+        android:id="@+id/txtbrIndexa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewDatum"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textViewbrIndexa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtbrIndexa"
+        android:text="Broj Indexa" />
+    
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_toEndOf="@+id/txtImeStudenta"
+        android:onClick="addStudent"/>
+
+    
+    
+    </RelativeLayout>
+    
+	
+
+        
