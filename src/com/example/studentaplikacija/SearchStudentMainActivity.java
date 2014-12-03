@@ -54,6 +54,7 @@ public class SearchStudentMainActivity extends ActionBarActivity {
 
 	public void searchStudent(View view) {
 		EditText txtSearch = (EditText) findViewById(R.id.txtID);
+		
 		final String strID = txtSearch.getText().toString();
 		if (strID.equals("")) {
 			Toast.makeText(this, "Morate uneti ID!", Toast.LENGTH_LONG).show();
@@ -121,6 +122,7 @@ public class SearchStudentMainActivity extends ActionBarActivity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			txtSearch.setText("");
 		}
 	}
 }

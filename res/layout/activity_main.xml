@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.studentaplikacija.MainActivity" >
+    tools:context="com.example.studentaplikacija.MainActivity"
+    android:background="@drawable/list_clipboard2" >
 
     <ListView
         android:id="@+id/listaStudenata"
@@ -14,14 +15,14 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/footer"
         android:layout_below="@+id/header"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"/>
 
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#AFA7EF" >
+        android:background="#ffffff" >
 
         <TextView
             android:id="@+id/textHID"
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#6AED83"
+        android:background="#ffffff"
         android:gravity="center" >
 
         <Button

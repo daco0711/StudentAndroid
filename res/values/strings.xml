@@ -9,5 +9,6 @@
     <string name="title_activity_search_student_main">SearchStudentMainActivity</string>
     <string name="searchIdText">Unesite ID studenta kojeg zelite da pronadjete!</string>
     <string name="title_activity_update_main">UpdateMainActivity</string>
+    <string name="title_activity_enter">EnterActivity</string>
 
 </resources>

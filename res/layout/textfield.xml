@@ -8,7 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     
    
     
@@ -18,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/idStudenta"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     
     <TextView
     	android:id="@+id/IndexNumber"
@@ -26,7 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/ImeStudenta"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     
     <TextView
     	android:id="@+id/Grad"
@@ -34,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/IndexNumber"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     
     	<TextView
     	android:id="@+id/Adresa"
@@ -42,7 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/Grad"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     	
     	<TextView
     	android:id="@+id/JMBG"
@@ -50,7 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/Adresa"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     	
     	<TextView
     	android:id="@+id/Sex"
@@ -58,7 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/JMBG"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:textColor="#000000" />
     	
     	<TextView
     	android:id="@+id/DatumRodjenja"
@@ -66,7 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/Sex"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp" 
+        android:textColor="#000000"/>
 
     	
 

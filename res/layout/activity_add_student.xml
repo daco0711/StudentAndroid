@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/add" >
     
 
     <EditText
@@ -16,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtImeStudenta"
-        android:text="Ime Studenta" />
+        android:text="Ime Studenta"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtJMBG"
@@ -30,7 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtJMBG"
-        android:text="JMBG" />
+        android:text="JMBG"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtGrad"
@@ -44,7 +49,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtGrad"
-        android:text="Grad" />
+        android:text="Grad"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtAdresa"
@@ -59,7 +66,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtAdresa"
-        android:text="Adresa" />
+        android:text="Adresa" 
+        android:textColor="#ff0000"
+        android:textSize="25px"/>
 
     <EditText
         android:id="@+id/txtSex"
@@ -73,7 +82,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtSex"
-        android:text="Sex" />
+        android:text="Sex"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtDatum"
@@ -81,13 +92,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewSex"
         android:ems="10"/>
-    
     <TextView
         android:id="@+id/textViewDatum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtDatum"
-        android:text="Datum Rodjenja" />
+        android:text="Datum Rodjenja"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtbrIndexa"
@@ -101,7 +113,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtbrIndexa"
-        android:text="Broj Indexa" />
+        android:text="Broj Indexa"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
     
     <Button
         android:id="@+id/btnOK"

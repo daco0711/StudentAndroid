@@ -176,6 +176,13 @@ public class AddStudentActivity extends ActionBarActivity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		txtName.setText("");
+		txtAddress.setText("");
+		txtBrIndexa.setText("");
+		txtDatum.setText("");
+		txtGrad.setText("");
+		txtJmbg.setText("");
+		txtSex.setText("");
 
 	}
 

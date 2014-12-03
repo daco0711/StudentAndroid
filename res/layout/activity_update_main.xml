@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.studentaplikacija.UpdateMainActivity" >
+    tools:context="com.example.studentaplikacija.UpdateMainActivity"
+    android:background="@drawable/update" >
 
     <EditText
         android:id="@+id/txtIDupdate"
@@ -20,7 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtIDupdate"
-        android:text="Unesite ID studenta nad kojim zelite da napravite UPDATE!" />
+        android:text="Unesite ID studenta nad kojim zelite da napravite update!"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtImeStudentaupdate"
@@ -34,7 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtImeStudentaupdate"
-        android:text="Ime Studenta" />
+        android:text="Ime Studenta"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtJMBG"
@@ -48,7 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtJMBG"
-        android:text="JMBG" />
+        android:text="JMBG" 
+        android:textColor="#ff0000"
+        android:textSize="25px"/>
 
     <EditText
         android:id="@+id/txtGrad"
@@ -62,7 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtGrad"
-        android:text="Grad" />
+        android:text="Grad"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtAdresa"
@@ -77,7 +86,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtAdresa"
-        android:text="Adresa" />
+        android:text="Adresa"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtSex"
@@ -91,7 +102,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtSex"
-        android:text="Sex" />
+        android:text="Sex"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
 
     <EditText
         android:id="@+id/txtDatum"
@@ -105,7 +118,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtDatum"
-        android:text="Datum Rodjenja" />
+        android:text="Datum Rodjenja" 
+        android:textColor="#ff0000"
+        android:textSize="25px"/>
 
     <EditText
         android:id="@+id/txtbrIndexa"
@@ -119,7 +134,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtbrIndexa"
-        android:text="Broj Indexa" />
+        android:text="Broj Indexa"
+        android:textColor="#ff0000"
+        android:textSize="25px" />
     
     <Button
         android:id="@+id/btnOK"
