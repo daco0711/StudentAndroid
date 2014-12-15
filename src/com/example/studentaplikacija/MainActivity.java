@@ -16,6 +16,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -36,8 +37,8 @@ import android.widget.Toast;
 import com.example.adapters.StudentListAdapter;
 
 public class MainActivity extends ActionBarActivity {
-
-	public static final String ip = "192.168.1.5";
+	
+	public static final String ip = "192.168.1.4";
 	public static final int port = 80;
 
 	public static final String Student_ID = "StudentId";
@@ -64,6 +65,8 @@ public class MainActivity extends ActionBarActivity {
 	private HashMap<String, String> map;
 	private StudentListAdapter adapter;
 	public static String SEARCH_RESULT = "SEARCH_RESULT";
+	
+	private Integer studentId = null;
 	
 	HashMap<String, String> kliknutStudent;
 
@@ -139,6 +142,12 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void delete(View view){
+		
+		Intent intent = new Intent(this,DeleteActivity.class);
+		startActivity(intent);
+	}
 
 	public void update(){
 		String id = kliknutStudent.get(Student_ID);
@@ -178,8 +187,8 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void delete() {
-		final int id = Integer.parseInt(kliknutStudent.get(Student_ID));
-		Log.i(TAG, "pozvana delete student "+ id);
+		studentId = Integer.parseInt(kliknutStudent.get(Student_ID));
+		Log.i(TAG, "pozvana delete student "+ studentId);
 		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -188,22 +197,21 @@ public class MainActivity extends ActionBarActivity {
 				PropertyInfo property = new PropertyInfo();
 				property.name="studentID";
 				property.type=PropertyInfo.INTEGER_CLASS;
-				request.addProperty(property, id);
+				request.addProperty(property, studentId);
 
 				SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER10);
 				envelope.implicitTypes = true;
 				envelope.dotNet = true;
-				//envelope.encodingStyle = SoapSerializationEnvelope.XSD;
+				envelope.encodingStyle = SoapSerializationEnvelope.XSD;
 				envelope.setOutputSoapObject(request);
-				HttpTransportSE transport = new HttpTransportSE(
-						MainActivity.URL);
+				HttpTransportSE transport = new HttpTransportSE(URL);
 
 				Log.i(MainActivity.TAG, "before call");
 				transport.debug = true;
 				try {
 					transport.call(DELETE_STUDENTS,envelope);
 					Log.i(MainActivity.TAG, "after call");
-					listAllStudents();
+					//listAllStudents();
 				} catch (IOException e) {
 					e.printStackTrace();
 				} catch (XmlPullParserException e) {

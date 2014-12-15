@@ -56,6 +56,14 @@
             android:layout_toRightOf="@+id/btnButtonSearch"
             android:onClick="PokreniDugme"
             android:text="Add" />
+        
+        <Button
+            android:id="@+id/btnButtonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btnButtonDodaj"
+            android:onClick="delete"
+            android:text="delete" />
     </RelativeLayout>
 
 </RelativeLayout>

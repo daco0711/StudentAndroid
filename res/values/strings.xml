@@ -10,5 +10,6 @@
     <string name="searchIdText">Unesite ID studenta kojeg zelite da pronadjete!</string>
     <string name="title_activity_update_main">UpdateMainActivity</string>
     <string name="title_activity_enter">EnterActivity</string>
+    <string name="title_activity_delete">DeleteActivity</string>
 
 </resources>

@@ -205,9 +205,8 @@ public class UpdateMainActivity extends ActionBarActivity {
 				t.start();
 				try {
 					t.join();
-					
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
